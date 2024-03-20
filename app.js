@@ -1,7 +1,5 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Author = require('./models/author');
-const Post = require('./models/post');
 require('dotenv').config();
 
 const app = express();
