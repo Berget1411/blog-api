@@ -14,7 +14,7 @@ const posts_post = async (req, res) => {
   });
   console.log(newPost);
   await newPost.save();
-  res.send(await Post.find());
+  res.json(await Post.find());
 };
 
 const posts_put = async (req, res) => {
@@ -31,13 +31,13 @@ const posts_put = async (req, res) => {
       },
     }
   );
-  res.send(await Post.find());
+  res.json(await Post.find());
 };
 
 const posts_delete = async (req, res) => {
   const id = req.params.id;
   await Post.findByIdAndDelete(id);
-  res.send(await Post.find());
+  res.json(await Post.find());
 };
 
 module.exports = { posts_get, posts_post, posts_put, posts_delete };
