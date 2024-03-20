@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const postsRouter = require('./routes/posts');
+const loginRouter = require('./routes/login');
 
 require('dotenv').config();
 
@@ -17,3 +18,4 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use('/posts', postsRouter);
+app.use('/login', loginRouter);

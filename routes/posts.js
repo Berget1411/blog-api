@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const authenticationToken = require('../middleware/authentication');
 const {
   posts_get,
   posts_post,
@@ -7,8 +8,8 @@ const {
 } = require('../controllers/posts');
 
 router.get('/', posts_get);
-router.post('/', posts_post);
-router.put('/:id', posts_put);
-router.delete('/:id', posts_delete);
+router.post('/', authenticationToken, posts_post);
+router.put('/:id', authenticationToken, posts_put);
+router.delete('/:id', authenticationToken, posts_delete);
 
 module.exports = router;
