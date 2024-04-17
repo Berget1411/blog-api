@@ -5,12 +5,14 @@ const posts_get = async (req, res) => {
 };
 
 const posts_post = async (req, res) => {
-  const { title, text, comments, is_published } = req.body;
+  const { title, category, text, image, comments, is_published } = req.body;
   const newPost = new Post({
-    title: title,
-    text: text,
-    comments: comments,
-    is_published: is_published,
+    title,
+    category,
+    text,
+    image,
+    comments,
+    is_published,
   });
   console.log(newPost);
   await newPost.save();

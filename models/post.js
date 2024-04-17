@@ -29,8 +29,6 @@ const postSchema = new Schema({
   },
   category: {
     type: String,
-    minLength: 5,
-    maxLength: 50,
     required: true,
   },
   text: {
