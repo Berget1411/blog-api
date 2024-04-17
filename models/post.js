@@ -38,6 +38,9 @@ const postSchema = new Schema({
     minLength: 20,
     required: true,
   },
+  image: {
+    type: String,
+  },
   author: {
     type: String,
     default: () => 'ludvig',
