@@ -4,6 +4,7 @@ const cors = require('cors');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
 const loginRouter = require('./routes/login');
+const registerRouter = require('./routes/register');
 
 require('dotenv').config();
 
@@ -23,3 +24,4 @@ mongoose
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
 app.use('/login', loginRouter);
+app.use('/register', registerRouter);

@@ -10,7 +10,7 @@ const commentSchema = new Schema({
     minLength: 3,
     maxLength: 200,
   },
-  name: {
+  username: {
     type: String,
     minLength: 1,
     maxLength: 20,
@@ -32,10 +32,15 @@ const postSchema = new Schema({
     minLength: 20,
     required: true,
   },
+  author: {
+    type: String,
+    default: () => 'ludvig',
+  },
   comments: [commentSchema],
   is_published: {
     type: Boolean,
     required: true,
+    default: () => true,
   },
   date: {
     type: String,
