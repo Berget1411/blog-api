@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
 const loginRouter = require('./routes/login');
@@ -9,6 +10,7 @@ require('dotenv').config();
 const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cors());
 
 mongoose
   .connect(process.env.DB_URL, {
