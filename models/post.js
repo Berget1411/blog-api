@@ -3,6 +3,13 @@ const moment = require('moment');
 
 const Schema = mongoose.Schema;
 
+const commenter = new Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+});
+
 const commentSchema = new Schema({
   comment: {
     type: String,
@@ -16,8 +23,8 @@ const commentSchema = new Schema({
     maxLength: 20,
   },
   date: {
-    type: String,
-    default: () => moment().format('D-MM-YYYY'),
+    type: Date,
+    default: () => new Date(),
   },
 });
 const postSchema = new Schema({
@@ -49,9 +56,10 @@ const postSchema = new Schema({
     required: true,
     default: () => true,
   },
+  likes: [commenter],
   date: {
-    type: String,
-    default: () => moment().format('D-MM-YYYY'),
+    type: Date,
+    default: () => new Date(),
   },
 });
 module.exports = mongoose.model('posts', postSchema);
