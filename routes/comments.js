@@ -7,8 +7,8 @@ const {
   comments_delete,
 } = require('../controllers/comments');
 
-router.get('/:postId', authenticationToken, comments_get);
-router.post('/:postId', authenticationToken, comments_post);
-router.delete('/:postId/:commentId', authenticationToken, comments_delete);
+router.get('/:postTitle', authenticationToken, comments_get);
+router.post('/', authenticationToken, comments_post);
+router.delete('/', authenticationToken, comments_delete);
 
 module.exports = router;

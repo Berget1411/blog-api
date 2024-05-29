@@ -1,29 +1,29 @@
 const Post = require('../models/post');
 
+const convertString = (str) => str.replaceAll('-', ' ').toLowerCase();
+
 const comments_get = async (req, res) => {
   const postId = req.params.postId;
   res.json(await Post.findById(postId));
 };
 
 const comments_post = async (req, res) => {
-  const postId = req.params.postId;
-  const { comment, name } = req.body;
+  const { comment, username, postId } = req.body;
   await Post.updateOne(
     { _id: postId },
-    { $push: { comments: { comment, name } } }
+    { $push: { comments: { comment, username } } }
   );
 
   res.json(await Post.findById(postId));
 };
 
 const comments_delete = async (req, res) => {
-  const postId = req.params.postId;
-  const commentId = req.params.commentId;
+  const { postId, commentId } = req.body;
   await Post.updateOne(
     { _id: postId },
     { $pull: { comments: { _id: commentId } } }
   );
-  res.json(Post.findById(postId).comments);
+  res.json(await Post.findById(postId).comments);
 };
 
 module.exports = { comments_get, comments_post, comments_delete };

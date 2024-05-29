@@ -11,16 +11,24 @@ module.exports = async (req, res) => {
 
   bcrypt.compare(password.toLowerCase(), user.password, (error, isMatch) => {
     if (error) {
-      return res.status(400).send('Password comparison failed');
+      return res
+        .status(400)
+        .send({ auth: false, message: 'Password comparison failed' });
     } else {
       if (isMatch) {
         const accessToken = jwt.sign(
           user.toJSON(),
-          process.env.ACCESS_TOKEN_SECRET
+          process.env.ACCESS_TOKEN_SECRET,
+          { expiresIn: 300 }
         );
-        res.json({ accessToken });
+        res.json({ auth: true, accessToken, result: { username } });
       } else {
-        return res.status(400).send('Password is incorrect');
+        return res
+          .status(400)
+          .send({
+            auth: false,
+            message: 'Wrong username/password combination!',
+          });
       }
     }
   });

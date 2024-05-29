@@ -5,6 +5,8 @@ const postsRouter = require('./routes/posts');
 const commentsRouter = require('./routes/comments');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
+const authenticationToken = require('./middleware/authentication');
+const User = require('./models/user');
 
 require('dotenv').config();
 
