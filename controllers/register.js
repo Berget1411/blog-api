@@ -14,7 +14,7 @@ module.exports = async (req, res) => {
     password: hashedPassword,
   });
   await user.save();
-  res.redirect('/log-in');
+  res.json({ message: 'Sign-up successful' });
 };
 
 // Add refresh tokens
