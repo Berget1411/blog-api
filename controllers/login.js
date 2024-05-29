@@ -19,16 +19,14 @@ module.exports = async (req, res) => {
         const accessToken = jwt.sign(
           user.toJSON(),
           process.env.ACCESS_TOKEN_SECRET,
-          { expiresIn: 300 }
+          { expiresIn: 1000 }
         );
         res.json({ auth: true, accessToken, result: { username } });
       } else {
-        return res
-          .status(400)
-          .send({
-            auth: false,
-            message: 'Wrong username/password combination!',
-          });
+        return res.status(400).send({
+          auth: false,
+          message: 'Wrong username/password combination!',
+        });
       }
     }
   });

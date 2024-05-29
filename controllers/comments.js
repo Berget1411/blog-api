@@ -26,4 +26,18 @@ const comments_delete = async (req, res) => {
   res.json(await Post.findById(postId).comments);
 };
 
-module.exports = { comments_get, comments_post, comments_delete };
+const comments_put = async (req, res) => {
+  const { postId, commentId, updatedComment } = req.body;
+  await Post.updateOne(
+    { _id: postId, 'comments._id': commentId },
+    { $set: { 'comments.$.comment': updatedComment } }
+  );
+  res.json(await Post.findById(postId).comments);
+};
+
+module.exports = {
+  comments_get,
+  comments_post,
+  comments_delete,
+  comments_put,
+};
