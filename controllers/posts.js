@@ -18,7 +18,7 @@ const posts_post = async (req, res) => {
 };
 
 const posts_put = async (req, res) => {
-  const { postId, title, category, text, image } = req.body;
+  const { postId, title, category, text, image, isPublished } = req.body;
   await Post.updateOne(
     { _id: postId },
     {
@@ -27,6 +27,7 @@ const posts_put = async (req, res) => {
         category,
         text,
         image,
+        is_published: isPublished,
       },
     }
   );
