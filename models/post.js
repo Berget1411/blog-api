@@ -50,7 +50,10 @@ const postSchema = new Schema({
     type: String,
     default: () => 'ludvig',
   },
-  comments: [commentSchema],
+  comments: {
+    type: [commentSchema],
+    default: () => [],
+  },
   is_published: {
     type: Boolean,
     required: true,
