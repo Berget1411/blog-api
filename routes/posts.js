@@ -10,6 +10,6 @@ const {
 router.get('/', posts_get);
 router.post('/', authenticationToken, posts_post);
 router.put('/:id', authenticationToken, posts_put);
-router.delete('/:id', authenticationToken, posts_delete);
+router.delete('/', authenticationToken, posts_delete);
 
 module.exports = router;

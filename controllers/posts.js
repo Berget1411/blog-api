@@ -35,9 +35,9 @@ const posts_put = async (req, res) => {
 };
 
 const posts_delete = async (req, res) => {
-  const id = req.params.id;
-  await Post.findByIdAndDelete(id);
-  res.json(await Post.find());
+  const { postId } = req.body;
+  await Post.findByIdAndDelete(postId);
+  res.json(await Post.findById(postId));
 };
 
 module.exports = { posts_get, posts_post, posts_put, posts_delete };
