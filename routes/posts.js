@@ -9,7 +9,7 @@ const {
 
 router.get('/', posts_get);
 router.post('/', authenticationToken, posts_post);
-router.put('/:id', authenticationToken, posts_put);
+router.put('/', authenticationToken, posts_put);
 router.delete('/', authenticationToken, posts_delete);
 
 module.exports = router;
