@@ -21,7 +21,11 @@ module.exports = async (req, res) => {
           process.env.ACCESS_TOKEN_SECRET,
           { expiresIn: 1000 }
         );
-        res.json({ auth: true, accessToken, result: { username } });
+        res.json({
+          auth: true,
+          accessToken,
+          result: { username, is_admin: user.is_admin },
+        });
       } else {
         return res.status(400).send({
           auth: false,
